@@ -1,12 +1,9 @@
 package hexlet.code.schemas;
 
-import java.util.ArrayList;
-import java.util.List;
 import java.util.function.Predicate;
 
-public final class StringSchema {
+public final class StringSchema extends BaseSchema {
 
-    private final List<Predicate<Object>> checkList = new ArrayList<>();
     public StringSchema() {
         this.addCheck(s -> s == null || s instanceof String);
     }
@@ -15,6 +12,7 @@ public final class StringSchema {
         checkList.add(check);
     }
 
+    @Override
     public void required() {
         this.addCheck(s -> s instanceof String && !(s.equals("")));
     }
@@ -30,13 +28,7 @@ public final class StringSchema {
     }
 
     public boolean isValid(Object value) {
-        for (var check : checkList) {
-            if (!check.test(value)) {
-                return false;
-            }
-        }
-
-        return true;
+        return super.isValid(value);
     }
 
 }
