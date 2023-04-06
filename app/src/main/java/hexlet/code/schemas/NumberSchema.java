@@ -5,12 +5,13 @@ import java.util.function.Predicate;
 public final class NumberSchema extends BaseSchema {
 
     public NumberSchema() {
+
         this.addCheck(s -> s == null || s instanceof Number);
     }
 
-    private void addCheck(Predicate<Object> check) {
-
-        checkList.add(check);
+    @Override
+    void addCheck(Predicate<Object> check) {
+        super.addCheck(check);
     }
 
     @Override
@@ -29,6 +30,7 @@ public final class NumberSchema extends BaseSchema {
         return this;
     }
 
+    @Override
     public boolean isValid(Object value) {
         return super.isValid(value);
     }

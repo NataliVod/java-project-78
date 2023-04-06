@@ -8,8 +8,9 @@ public final class StringSchema extends BaseSchema {
         this.addCheck(s -> s == null || s instanceof String);
     }
 
-    private void addCheck(Predicate<Object> check) {
-        checkList.add(check);
+    @Override
+    void addCheck(Predicate<Object> check) {
+        super.addCheck(check);
     }
 
     @Override
@@ -27,6 +28,7 @@ public final class StringSchema extends BaseSchema {
         return this;
     }
 
+    @Override
     public boolean isValid(Object value) {
         return super.isValid(value);
     }
