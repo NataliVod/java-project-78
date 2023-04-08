@@ -5,7 +5,7 @@ import java.util.function.Predicate;
 public final class StringSchema extends BaseSchema {
 
     public StringSchema() {
-        this.addCheck(s -> s == null || s instanceof String);
+        this.addCheck(v -> v == null || v instanceof String);
     }
 
     @Override
@@ -14,22 +14,24 @@ public final class StringSchema extends BaseSchema {
     }
 
     @Override
-    public void required() {
-        this.addCheck(s -> s instanceof String && !(s.equals("")));
+    public  StringSchema required() {
+        this.addCheck(v -> v instanceof String && !(v.equals("")));
+        return this;
     }
 
     public StringSchema minLength(int length) {
-        this.addCheck(s -> s != null && ((String) s).length() >= length);
+        this.addCheck(v -> v != null && ((String) v).length() >= length);
         return this;
     }
 
     public StringSchema contains(String substring) {
-        this.addCheck(s -> s != null && ((String) s).contains(substring));
+        this.addCheck(v -> v != null && ((String) v).contains(substring));
         return this;
     }
 
     @Override
     public boolean isValid(Object value) {
+
         return super.isValid(value);
     }
 

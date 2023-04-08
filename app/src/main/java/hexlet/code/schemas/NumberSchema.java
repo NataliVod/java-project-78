@@ -6,7 +6,7 @@ public final class NumberSchema extends BaseSchema {
 
     public NumberSchema() {
 
-        this.addCheck(s -> s == null || s instanceof Number);
+        this.addCheck(v -> v == null || v instanceof Number);
     }
 
     @Override
@@ -15,23 +15,25 @@ public final class NumberSchema extends BaseSchema {
     }
 
     @Override
-    public void required() {
+    public NumberSchema required() {
 
-        this.addCheck(s -> s instanceof Number);
+        this.addCheck(v -> v instanceof Number);
+        return this;
     }
 
     public NumberSchema positive() {
-        this.addCheck(s -> s != null && ((int) s) > 0);
+        this.addCheck(v -> (v == null) || ((int) v) > 0);
         return this;
     }
 
     public NumberSchema range(int begin, int end) {
-        this.addCheck(s -> s != null && ((int) s) >= begin && ((int) s) <= end);
+        this.addCheck(v -> v != null && ((int) v) >= begin && ((int) v) <= end);
         return this;
     }
 
     @Override
     public boolean isValid(Object value) {
+
         return super.isValid(value);
     }
 
