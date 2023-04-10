@@ -36,7 +36,7 @@ public class BaseSchema {
      * @param value The value to check.
      * @return true if the value passes all checks, false otherwise.
      */
-    boolean isValid(Object value) {
+    public boolean isValid(Object value) {
         for (var check : checkList) {
             if (!check.test(value)) {
                 return false;

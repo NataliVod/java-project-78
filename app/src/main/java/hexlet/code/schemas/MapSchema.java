@@ -1,17 +1,12 @@
 package hexlet.code.schemas;
 
 import java.util.Map;
-import java.util.function.Predicate;
 
 public final class MapSchema extends BaseSchema {
 
     public MapSchema() {
-        this.addCheck(v -> v == null || v instanceof Map);
-    }
 
-    @Override
-    void addCheck(Predicate<Object> check) {
-        super.addCheck(check);
+        this.addCheck(v -> v == null || v instanceof Map);
     }
 
     @Override
@@ -34,8 +29,4 @@ public final class MapSchema extends BaseSchema {
         return this;
     }
 
-    @Override
-    public boolean isValid(Object value) {
-        return super.isValid(value);
-    }
 }
